@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TourAgency12</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <script
+    src="https://code.jquery.com/jquery-3.5.1.js"
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+</head>
+
+<body>
+<div class="container">
+
+
+  <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+
+    <a class="navbar-brand" href="#">Navbar</a>
+
+
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <%= link_to 'Tours', home_index_path, class: 'nav-link' %>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+    </ul>
+
+    <% if user_signed_in? %>
+      <% if admin? %><%= link_to "New tour", new_tour_path, class: 'btn btn-outline-primary pull-xs-right' %><% end %>
+      <li>
+        <span class="pull-xs-right"><%  =current_user.first_name + ' ' + current_user.last_name %></span>
+      </li>
+      <li>
+        <%= link_to('Logout', destroy_user_session_path, method: :delete, class: 'btn btn-outline-primary pull-xs-right') %>
+      </li>
+    <% else %>
+      <li>
+        <%= link_to('Login', new_user_session_path, class: 'btn btn-outline-primary pull-xs-right') %>
+      </li>
+    <% end %>
+
+  </nav>
+  <%= yield %>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.datepicker').datepicker({
+            format: 'dd.mm.yyyy'
+        });
+    });
+</script>
+</body>
+</html>
