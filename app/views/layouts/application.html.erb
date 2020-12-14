@@ -34,6 +34,13 @@
         <% end %>
       </ul>
 
+      <li>
+        <%= form_with model: @tour, url: tour_filter_path(tour_id:1), method: :get, remote: true do |form|  %>
+          <%= form.select :country, @countries.map{|country|country.name} %>
+          <%= form.submit 'Apply', class: 'btn btn-outline-success' %>
+        <% end %>
+      </li>
+
       <% if user_signed_in? %>
         <% if admin? %><%= link_to "New tour", new_tour_path, class: 'btn btn-outline-primary pull-xs-right' %>
         <% end %>
