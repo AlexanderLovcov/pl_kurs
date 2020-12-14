@@ -9,7 +9,6 @@ class ToursController < ApplicationController
   end
 
   def update
-    #binding.pry
     if @tour.update(tour_params)
       redirect_to home_index_path
     else
