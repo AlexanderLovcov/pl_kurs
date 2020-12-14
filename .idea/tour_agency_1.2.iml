@@ -262,17 +262,20 @@
           </RakeTaskImpl>
           <RakeTaskImpl id="autoprefixer">
             <subtasks>
+
               <RakeTaskImpl description="" fullCommand="autoprefixer:info" id="info" />
             </subtasks>
           </RakeTaskImpl>
           <RakeTaskImpl id="cache_digests">
             <subtasks>
+
               <RakeTaskImpl description="" fullCommand="cache_digests:dependencies" id="dependencies" />
               <RakeTaskImpl description="" fullCommand="cache_digests:nested_dependencies" id="nested_dependencies" />
             </subtasks>
           </RakeTaskImpl>
           <RakeTaskImpl id="db">
             <subtasks>
+
               <RakeTaskImpl description="" fullCommand="db:_dump" id="_dump" />
               <RakeTaskImpl description="" fullCommand="db:abort_if_pending_migrations" id="abort_if_pending_migrations" />
               <RakeTaskImpl description="" fullCommand="db:charset" id="charset" />
@@ -298,6 +301,7 @@
               </RakeTaskImpl>
               <RakeTaskImpl id="fixtures">
                 <subtasks>
+
                   <RakeTaskImpl description="" fullCommand="db:fixtures:identify" id="identify" />
                   <RakeTaskImpl description="" fullCommand="db:fixtures:load" id="load" />
                 </subtasks>
@@ -327,6 +331,7 @@
                 <subtasks>
                   <RakeTaskImpl id="cache">
                     <subtasks>
+
                       <RakeTaskImpl description="" fullCommand="db:schema:cache:clear" id="clear" />
                       <RakeTaskImpl description="" fullCommand="db:schema:cache:dump" id="dump" />
                     </subtasks>
@@ -360,6 +365,7 @@
                 </subtasks>
               </RakeTaskImpl>
               <RakeTaskImpl description="" fullCommand="db:truncate_all" id="truncate_all" />
+
               <RakeTaskImpl description="" fullCommand="db:version" id="version" />
             </subtasks>
           </RakeTaskImpl>
