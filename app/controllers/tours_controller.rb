@@ -36,7 +36,9 @@ class ToursController < ApplicationController
     redirect_to home_index_path
   end
 
-
+  def filter
+    #@tour = Tour.where(country_id: )
+  end
 
   private
 
