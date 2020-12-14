@@ -37,7 +37,9 @@ class ToursController < ApplicationController
   end
 
   def filter
-    #@tour = Tour.where(country_id: )
+    #binding.pry
+    @countries = Country.all
+    @tours = Tour.where(country_id: Country.find_by_name(params[:country]))
   end
 
   private
