@@ -1,6 +1,7 @@
 class ToursController < ApplicationController
   before_action :set_tour, only: [:show, :edit, :destroy, :update]
   before_action :check_if_admin, only: [:edit, :new, :create, :destroy, :update]
+
   def show
   end
 
@@ -36,12 +37,20 @@ class ToursController < ApplicationController
   end
 
   def filter
-    #binding.pry
     @countries = Country.all
-    @tours = Tour.where(country_id: Country.find_by_name(params[:country]))
+    @tours = params[:country] == 'ALL' ? Tour.all : Tour.where(country_id: Country.find_by_name(params[:country]))
+    @tours = @tours.where('tours.price BETWEEN ? AND ?', low_price, high_price)
   end
 
   private
+
+  def low_price
+    params[:low_price].present? ? params[:low_price].to_f : 0
+  end
+
+  def high_price
+    params[:high_price].present? ? params[:high_price].to_f : 999999999
+  end
 
   def check_if_admin
     raise Exception.new('gtfo lil hacker, only admins allowed') if !current_user.admin?

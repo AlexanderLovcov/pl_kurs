@@ -38,9 +38,15 @@
         <%= form_with model: @tour, url: tour_filter_path(tour_id: 1), method: :get, remote: true do |form| %>
           <div class="input-group">
             <div class="input-group-prepend">
-              <%= form.select :country, ["choice county"] + @countries.map { |country| country.name }, {}, { class: 'form-control' } %>
+              <span class="input-group-text">Filter by:</span>
             </div>
-            <%= form.submit 'Apply', class: 'btn btn-outline-success' %>
+            <%= form.select :country, ["ALL"] + @countries.map { |country| country.name }, {}, { class: 'form-control' } %>
+            <%= form.text_field :low_price, class: 'form-control', placeholder: '$ from', style: 'max-width: 80px' %>
+            <%= form.text_field :high_price, class: 'form-control', placeholder: '$ to', style: 'max-width: 80px' %>
+            <div class="input-group-append">
+              <%= form.submit 'Apply', class: 'btn btn-outline-success' %>
+            </div>
+
           </div>
         <% end %>
       </li>
@@ -73,11 +79,11 @@
 } </style>
 
 <script type="text/javascript">
-  $(document).ready(function () {
-    $('.datepicker').datepicker({
-      format: 'dd.mm.yyyy'
+    $(document).ready(function () {
+        $('.datepicker').datepicker({
+            format: 'dd.mm.yyyy'
+        });
     });
-  });
 </script>
 </body>
 </html>
