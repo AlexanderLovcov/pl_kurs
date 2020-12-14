@@ -1,34 +1,38 @@
 <%= form_for @tour do |f| %>
-  <div class=" form-control">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.text_field :title, placeholder: 'title', class: 'form-control' %>
+            </div>
+            <div class="col-md-6">
+              <%= f.collection_select :country_id, @countries, :id, :name, {}, { class: 'form-control' } %>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.text_field :price, placeholder: 'price', class: 'form-control' %>
+            </div>
+            <div class="col-md-6">
+              <%= f.text_field :tourists_count, placeholder: 'tourists count', class: 'form-control' %>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.text_field :start_date, class: 'datepicker form-control', placeholder: 'start date' %>
+            </div>
+            <div class="col-md-6">
+              <%= f.text_field :end_date, class: 'datepicker form-control', placeholder: 'end date' %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <%= f.submit 'Create tour', class: 'btn btn-success', style: 'width: 100%' %>
+    </div>
   </div>
-
-  <div class=" form-control">
-    <%= f.label :country %>
-    <%= f.collection_select :country_id, @countries, :id, :name, include_blank: true %>
-  </div>
-
-  <div class=" form-control">
-    <%= f.label :price %>
-    <%= f.text_field :price %>
-  </div>
-
-  <div class=" form-control">
-    <%= f.label :start_date %>
-    <%= f.text_field :start_date, class: 'datepicker' %>
-  </div>
-
-  <div class=" form-control">
-    <%= f.label :end_date %>
-    <%= f.text_field :end_date, class: 'datepicker' %>
-  </div>
-
-  <div class=" form-control">
-    <%= f.label :tourists_count %>
-    <%= f.text_field :tourists_count %>
-  </div>
-
-  <%= f.submit %>
-
 <% end %>
