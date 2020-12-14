@@ -11,7 +11,8 @@
             on <%= tour.start_date.strftime("%d.%m.%Y") %>
             till <%= tour.end_date.strftime("%d.%m.%Y") %> <br> For <%= tour.tourists_count %> ppl</p>
           <% if admin? %><%= link_to "Edit", edit_tour_path(id:tour.id),class:'btn btn-primary' %><% end %>
-        </div>
+          <% if admin? %><%= link_to "Delete", tour_path(id:tour.id), method: :delete,data: {confirm: 'R u sure?'},class:'btn btn-danger' %><% end %>
+        </div>                               <!-- to do: change path -->
       </div>
     </div>
     <br>

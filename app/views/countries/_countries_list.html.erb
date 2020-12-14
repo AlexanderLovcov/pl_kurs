@@ -1,0 +1,4 @@
+<% @countries.each do |country| %>
+  <%= country.name %> | <%= link_to 'Delete', country_path(id:country.id), method: :delete, data: {confirm: 'R u sure?'},
+                                    remote: true, style: 'color: red'%><br>
+<% end %>

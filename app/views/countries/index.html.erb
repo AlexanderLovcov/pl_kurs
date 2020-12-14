@@ -1,0 +1,8 @@
+<%=form_for Country.new, url:countries_path, method: :post, remote:true do |f| %>
+  <%= f.text_field :name, class:'form-control', placeholder: 'Country name' %>
+  <%= f.submit %>
+<% end %>
+
+<hr>
+
+<div id='countries_list'><%= render partial: 'countries_list' %></div>

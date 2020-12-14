@@ -31,6 +31,11 @@ class ToursController < ApplicationController
     end
   end
 
+  def destroy
+    @tour.destroy
+    redirect_to home_index_path
+  end
+
 
 
   private
