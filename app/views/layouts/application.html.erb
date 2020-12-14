@@ -37,7 +37,7 @@
     <% if user_signed_in? %>
       <% if admin? %><%= link_to "New tour", new_tour_path, class: 'btn btn-outline-primary pull-xs-right' %><% end %>
       <li>
-        <span class="pull-xs-right"><%=current_user.first_name + ' ' + current_user.last_name %></span>
+        <span class="pull-xs-right"><%= current_user.first_name + ' ' + current_user.last_name %></span>
       </li>
       <li>
         <%= link_to('Logout', destroy_user_session_path, method: :delete, class: 'btn btn-outline-primary pull-xs-right') %>
