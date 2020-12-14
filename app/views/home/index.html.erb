@@ -1,18 +1,18 @@
 <div class="row">
   <% @tours.each do |tour| %>
-
-
     <div class="col-md-3">
-      <div class="card" style="width: 20rem;">
-        <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
-        <div class="card-block">
-          <h4 class="card-title"><%= tour.title %></h4>
-          <p class="card-text"><%= tour.country.name %> <br><b>$<%= tour.price %></b> <br> Starting
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><%= tour.title %></h5>
+          <h6 class="card-subtitle mb-2 text-muted">$<%= tour.price %></h6>
+          <p class="card-text"><%= tour.country.name %> <br> Starting
             on <%= tour.start_date.strftime("%d.%m.%Y") %>
             till <%= tour.end_date.strftime("%d.%m.%Y") %> <br> For <%= tour.tourists_count %> ppl</p>
-          <% if admin? %><%= link_to "Edit", edit_tour_path(id:tour.id),class:'btn btn-primary' %><% end %>
-          <% if admin? %><%= link_to "Delete", tour_path(id:tour.id), method: :delete,data: {confirm: 'R u sure?'},class:'btn btn-danger' %><% end %>
-        </div>                               <!-- to do: change path -->
+          <% if admin? %>
+            <%= link_to "Edit", edit_tour_path(id: tour.id), class: 'card-link' %>
+            <%= link_to "Delete", tour_path(id: tour.id), method: :delete, data: { confirm: 'R u sure?' }, class: 'card-link' %>
+          <% end %>
+        </div>
       </div>
     </div>
     <br>
