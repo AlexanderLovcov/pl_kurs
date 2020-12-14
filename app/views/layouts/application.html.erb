@@ -35,9 +35,13 @@
       </ul>
 
       <li>
-        <%= form_with model: @tour, url: tour_filter_path(tour_id:1), method: :get, remote: true do |form|  %>
-          <%= form.select :country, @countries.map{|country|country.name} %>
-          <%= form.submit 'Apply', class: 'btn btn-outline-success' %>
+        <%= form_with model: @tour, url: tour_filter_path(tour_id: 1), method: :get, remote: true do |form| %>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <%= form.select :country, ["choice county"] + @countries.map { |country| country.name }, {}, { class: 'form-control' } %>
+            </div>
+            <%= form.submit 'Apply', class: 'btn btn-outline-success' %>
+          </div>
         <% end %>
       </li>
 
