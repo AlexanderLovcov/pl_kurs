@@ -1,6 +1,7 @@
 class ToursController < ApplicationController
   before_action :set_tour, only: [:show, :edit, :destroy, :update]
   before_action :check_if_admin, only: [:edit, :new, :create, :destroy, :update]
+  skip_before_action :authenticate_user!, only: [:filter]
 
   def show
   end
@@ -10,7 +11,7 @@ class ToursController < ApplicationController
   end
 
   def update
-    if @tour.update(tour_params)
+    if @tour.update(tour_params.merge(image: params[:tour][:image]))
       redirect_to home_index_path
     else
       render :edit
@@ -23,7 +24,8 @@ class ToursController < ApplicationController
   end
 
   def create
-    @tour = Tour.new(tour_params)
+    binding.pry
+    @tour = Tour.new(tour_params.merge(image: params[:tour][:image]))
     if @tour.save
       redirect_to home_index_path
     else
@@ -37,6 +39,7 @@ class ToursController < ApplicationController
   end
 
   def filter
+
     @countries = Country.all
     @tours = params[:country] == 'ALL' ? Tour.all : Tour.where(country_id: Country.find_by_name(params[:country]))
     @tours = @tours.where('tours.price BETWEEN ? AND ?', low_price, high_price)

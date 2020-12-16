@@ -24,6 +24,8 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'bootstrap', '~> 5.0.0.alpha3'
 
+gem 'carrierwave', '~> 2.0'
+
 gem 'devise'
 
 # Use Active Storage variant

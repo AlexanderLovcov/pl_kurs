@@ -1,6 +1,7 @@
 <% @tours.each do |tour| %>
   <div class="col-md-3">
     <div class="card" style="width: 18rem;">
+      <%= image_tag(tour.image.url, alt: 'Image', class:'card-img-top', height: '150px') if tour.image? %>
       <div class="card-body">
         <h5 class="card-title"><%= tour.title %></h5>
         <h6 class="card-subtitle mb-2 text-muted">$<%= tour.price %></h6>
